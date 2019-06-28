@@ -1,1 +1,19 @@
 /*Robert Zuniga */
+/*
+  The background color will be #ccc
+  at browser widths above 768px
+*/
+h1 {
+    font-size: 28px;
+    line-height: 60px;
+}
+
+body {
+    /* Typography */
+    font-size: 18px;
+    line-height: 30px;
+  
+    /* Visual */
+    background-color: #ccc;
+
+  }
