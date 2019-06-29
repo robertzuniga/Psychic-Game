@@ -8,75 +8,75 @@
     <title>The Psychic Game</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="/assets/javascript/game.js"></script>
 </head>
 
 <body>
-    <h1>The Psychic Game</h1>
-    <div>
-      
-        <p id="directions-text">Guess what letter I'm thinking of ... </p>
-        <p id="userchoice-text"></p>
-        <p id="computerchoice-text"></p>
-        <p id="wins-text"></p>
-        <p id="losses-text"></p>
-      </div>
 
-
-
-<script type="text/javascript">
+    <div id='updateGameStatus'> 
+        <h1> The Psychic Game</h1>     
+        <p Guess what letter I'm thinking of ...</p> 
+        <p id="userchoice-text">You chose: </p>
+        <p id="computerchoice-text">The computer chose: </p>
+        <p id="wins-text"> Wins: </p>
+        <p id="losses-text"> Losses: </p>
+        <p id="guessleft-text"> Guesses Left: </p>
+        <p id="yourguessessofar-text"> Your guesses so far: </p>
+    </div>
+    <script>
         // Creates an array that lists out all of the options (alphabet).
         
         var computerChoices = ["a", "b", "c","d", "e", "f","g", "h", "i","j", "k", "l","m", "n", "o","p", "q", "r","s", "t", "u","v", "w", "x","y","z"];
-        
-        
+          
         // Creating variables to hold the number of wins, losses, and ties. They start at 0.
-        var wins = 0;   var losses = 0;    var ties = 0;
-        
-        
+        var wins = 0;   var losses = 0;  var numberOfGuesses = 9; var yourGuesses = [];  
+          
         // Create variables that hold references to the places in the HTML where we want to display things.
-        var directionsText = document.getElementById("directions-text");
         var userChoiceText = document.getElementById("userchoice-text");
         var computerChoiceText = document.getElementById("computerchoice-text");
         var winsText = document.getElementById("wins-text");
         var lossesText = document.getElementById("losses-text");
-        var tiesText = document.getElementById("ties-text");
+        var guessLeft = document.getElementById("guessleft-text");
+        var yourGuessesSoFar=document.getElementById("yourguessessofar-text");
+        
+        console.log("before key");
+        
+        document.onkeyup = function(event) {
+        
+        var userGuess = event.key;
+      
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      
+          if (numberOfGuesses> -1) {
+                      if (userGuess === computerGuess) {
+                          wins ++;
+                          numberOfGuesses =9;
+                          yourGuesses =[];
+                      }
+      
+                      if (userGuess !== computerGuess) {
+                          numberOfGuesses --;
+                          yourGuesses.push=[userGuess];
+                      }
+      
+                      if (numberOfGuesses === 0) { 
+                          losses ++;
+                          yourGuesses =[];
+                          numberOfGuesses=9;
+                      } //end if     
+                      //directionsText.textContent="";
+          }
+      
+           userChoiceText.textContent =     " You chose: " + userGuess;
+           computerChoiceText.textContent = " The computer chose: " + computerGuess;
+           winsText.textContent =           " Wins: " + wins;
+           lossesText.textContent =         " Losses: " + losses;
+           guessLeft.textContent =          " Guesses Left: " + numberOfGuesses;        
+           yourGuessesSoFar.textContent =   "Your guesses so far: " + userGuess;         
+          console.log("=> wins =>", wins);
+        }
+        console.log("after key");
+      </script>
 
-
-                                   // for(var i = 0; i < 6; i++) {
-
-
-                                      console.log("before key");
-                                      // This function is run whenever the user presses a key.
-                                      document.onkeyup = function(event) {
-                                      // Determines which key was pressed.
-                                      var userGuess = event.key;
-                                      // Randomly chooses a choice from the options array. This is the Computer's guess.
-                                      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-                                      // This logic determines the outcome of the game (win/loss), and increments the appropriate number
-                                    
-                                      if ((userGuess === computerGuess)) {
-                                        wins++;
-                                      } else {
-                                        losses++;
-                                      } //end if     
-
-                                      // Display the user and computer guesses, and wins/losses/ties.
-                                      userChoiceText.textContent =     " You chose: " + userGuess;
-                                      computerChoiceText.textContent = " The computer chose: " + computerGuess;
-                                      winsText.textContent =           " Wins : " + wins;
-                                      lossesText.textContent =         " Losses : " + losses;        
-                                      console.log(userChoiceText.textContent);          
-                                     }
-                                    
-                                     console.log("after key");
-                                      //console.log(i);
-                                    // break;
-                                   // }; //end for
-        //console.log("here => " + i);
-
-
-
-
-</script>
 </body>
 </html>
