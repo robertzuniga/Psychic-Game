@@ -52,6 +52,8 @@
                           numberOfGuesses =9;
                           yourGuesses =[];
                           yourGuessesSoFar.innerHTML = "Your guesses so far: ";
+                          userGuess = "";
+                          computerGuess= "";
                       }
       
                       if (userGuess !== computerGuess) {
@@ -63,7 +65,9 @@
                           losses ++;
                           yourGuesses =[];
                           numberOfGuesses=9;
-                          yourGuessesSoFar.innerHTML = "Your guesses so far: "; 
+                          yourGuessesSoFar.innerHTML = "Your guesses so far: ";
+                          userGuess = ""; 
+                          computerGuess= "";
                       } //end if     
                       //directionsText.textContent="";
           }
