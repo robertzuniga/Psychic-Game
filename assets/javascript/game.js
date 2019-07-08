@@ -1,6 +1,6 @@
 //Robert Zuniga
 <script>
-  // Creates an array that lists out all of the options (alphabet).
+  {/* // Creates an array that lists out all of the options (alphabet).
   
   var computerChoices = ["a", "b", "c","d", "e", "f","g", "h", "i","j", "k", "l","m", "n", "o","p", "q", "r","s", "t", "u","v", "w", "x","y","z"];
     
@@ -51,5 +51,5 @@
      yourGuessesSoFar.textContent =   "Your guesses so far: " + userGuess;         
     console.log("=> wins =>", wins);
   }
-  console.log("after key");
+  console.log("after key"); */}
 </script>

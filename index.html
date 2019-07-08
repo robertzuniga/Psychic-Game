@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Psychic Game</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="/assets/javascript/game.js"></script>
+
 </head>
 
 <body>
@@ -52,6 +51,7 @@
                           wins ++;
                           numberOfGuesses =9;
                           yourGuesses =[];
+                          yourGuessesSoFar.innerHTML = "Your guesses so far: ";
                       }
       
                       if (userGuess !== computerGuess) {
@@ -63,6 +63,7 @@
                           losses ++;
                           yourGuesses =[];
                           numberOfGuesses=9;
+                          yourGuessesSoFar.innerHTML = "Your guesses so far: "; 
                       } //end if     
                       //directionsText.textContent="";
           }
@@ -71,9 +72,8 @@
            computerChoiceText.textContent = " The computer chose: " + computerGuess;
            winsText.textContent =           " Wins: " + wins;
            lossesText.textContent =         " Losses: " + losses;
-           guessLeft.textContent =          " Guesses Left: " + numberOfGuesses;        
-           yourGuessesSoFar.textContent =   "Your guesses so far: " + userGuess;         
-          console.log("=> wins =>", wins);
+           guessLeft.textContent =          " Guesses Left: " + numberOfGuesses;
+           yourGuessesSoFar.innerHTML = yourGuessesSoFar.innerHTML + userGuess;         
         }
         console.log("after key");
       </script>
